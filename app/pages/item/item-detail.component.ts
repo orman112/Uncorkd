@@ -6,6 +6,7 @@ import { ItemService } from "./item.service";
 
 @Component({
     selector: "ns-details",
+    providers: [ItemService],
     moduleId: module.id,
     templateUrl: "./item-detail.component.html",
 })

@@ -1,11 +1,9 @@
 import { NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
 import { NativeScriptModule } from "nativescript-angular/nativescript.module";
-import { AppRoutingModule } from "./app.routing";
-import { AppComponent } from "./app.component";
+import { NativeScriptRouterModule } from "nativescript-angular/router";
 
-import { ItemService } from "./item/item.service";
-import { ItemsComponent } from "./item/items.component";
-import { ItemDetailComponent } from "./item/item-detail.component";
+import { AppComponent } from "./app.component";
+import { routes, navigatableComponents } from "./app.routing";
 
 @NgModule({
     bootstrap: [
@@ -13,15 +11,12 @@ import { ItemDetailComponent } from "./item/item-detail.component";
     ],
     imports: [
         NativeScriptModule,
-        AppRoutingModule
+        NativeScriptRouterModule,
+        NativeScriptRouterModule.forRoot(routes)
     ],
     declarations: [
         AppComponent,
-        ItemsComponent,
-        ItemDetailComponent
-    ],
-    providers: [
-        ItemService
+        ...navigatableComponents
     ],
     schemas: [
         NO_ERRORS_SCHEMA
