@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "290711730164",
+    "firebase_url": "https://uncorkd-cbf45.firebaseio.com",
+    "project_id": "uncorkd-cbf45",
+    "storage_bucket": "uncorkd-cbf45.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:290711730164:android:66f1dfc19465cc7d",
+        "android_client_info": {
+          "package_name": "org.nativescript.Uncorkd"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "290711730164-a9k9k4kscsp8ron72p968qek1m4cscs2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBNNE6VTyi8_Ig6bB9MhHGC6lQsw7tiWgo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
