@@ -8,7 +8,8 @@ import {RouterExtensions} from 'nativescript-angular/router/router-extensions';
     moduleId: module.id,
     selector: 'uc-login',
     templateUrl: 'login.html',
-    providers: [FirebaseService]
+    providers: [FirebaseService],
+    styleUrls: ["login-common.css", "login.css"]
 })
 export class LoginComponent {
     user: User;
@@ -33,7 +34,7 @@ export class LoginComponent {
         this.fireBaseService.login(this.user)
         .then(() => {
             this.isAuthenticating = false;
-            this.routerExtensions.navigate(['/'], { clearHistory: true });
+            this.routerExtensions.navigate(['items'], { clearHistory: true });
         })
         .catch((message: any) => {
             this.isAuthenticating = false;

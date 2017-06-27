@@ -1,0 +1,18 @@
+<ActionBar title="Bourbons" class="action-bar">
+</ActionBar>
+<GridLayout class="page" rows="auto, *">
+    <GridLayout row="0" columns="*, 125">
+        <TextField text="Bourbon Name" col="0"></TextField>
+        <TextField text="Bourbon Rating" col="1"></TextField>
+    </GridLayout>
+
+    <ListView row="1" [items]="items" class="list-group">
+        <ng-template let-item="item">
+            <GridLayout columns="*, 75">
+                <Label column="0" [nsRouterLink]="['/item', item.id]" [text]="item.name"
+                class="list-group-item"></Label>
+                <Label [text]="item.rating" col="1"></Label>
+            </GridLayout>
+        </ng-template>
+    </ListView>
+</GridLayout>
