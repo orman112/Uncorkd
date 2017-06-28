@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 
 import { Item } from "../../shared/models/item.model";
 import { ItemService } from "../../shared/services/item.service";
+import { BackendService } from "../../shared/services/backend.service";
 
 @Component({
     selector: "ns-items",
@@ -17,5 +18,6 @@ export class ItemsComponent implements OnInit {
 
     ngOnInit(): void {
         this.items = this.itemService.getItems();
+        alert(`Is the user logged in: ${BackendService.isLoggedIn()}`);
     }
 }

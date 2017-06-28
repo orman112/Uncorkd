@@ -2,7 +2,7 @@
 import { platformNativeScriptDynamic } from "nativescript-angular/platform";
 import { AppModule } from "./app.module";
 
-import { Config } from "./shared/config";
+import { BackendService } from "./shared/services/backend.service";
 import firebase = require("nativescript-plugin-firebase");
 
 firebase.init({
@@ -11,10 +11,10 @@ firebase.init({
     onAuthStateChanged: (data: any) => {
         console.log(`Auth State Changed: ${JSON.stringify(data)}`);
         if (data.loggedIn) {
-            Config.token = data.user.uid;
+            BackendService.token = data.user.uid;
         }
         else {
-            Config.token = '';
+            BackendService.token = '';
         }
     }
 }).then(

@@ -4,7 +4,7 @@ import { NativeScriptFormsModule } from "nativescript-angular/forms";
 import { NativeScriptRouterModule } from "nativescript-angular/router";
 
 import { AppComponent } from "./app.component";
-import { routes, navigatableComponents } from "./app.routing";
+import { routes, navigatableComponents, providers } from "./app.routing";
 
 @NgModule({
     bootstrap: [
@@ -20,8 +20,8 @@ import { routes, navigatableComponents } from "./app.routing";
         AppComponent,
         ...navigatableComponents
     ],
-    schemas: [
-        NO_ERRORS_SCHEMA
+    providers: [
+        ...providers
     ]
 })
 export class AppModule { }

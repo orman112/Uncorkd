@@ -27,8 +27,10 @@ export class FirebaseService {
     login(user: User) {
         return firebase.login({
             type: firebase.LoginType.PASSWORD,
-            email: user.email,
-            password: user.password
+            passwordOptions: {
+                email: user.email,
+                password: user.password
+            }
         })
         .then((result: any) => {
             Config.token = result.uid;
