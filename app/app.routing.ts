@@ -1,18 +1,18 @@
-import { ItemsComponent } from "./pages/item/items.component";
-import { ItemDetailComponent } from "./pages/item/item-detail.component";
+import { BourbonsComponent } from "./pages/bourbon/bourbons.component";
+import { BourbonDetailComponent } from "./pages/bourbon/bourbon-detail.component";
 import { LoginComponent } from "./pages/login/login.component";
 import { AuthGuard } from "./shared/services/auth-guard.service";
 
 export const routes = [
-    { path: "", component: ItemsComponent, canActivate: [AuthGuard] },
+    { path: "", component: BourbonsComponent, canActivate: [AuthGuard] },
     { path: "login", component: LoginComponent },
-    { path: "items", component: ItemsComponent },
-    { path: "item/:id", component: ItemDetailComponent },
+    { path: "items", component: BourbonsComponent },
+    { path: "item/:id", component: BourbonDetailComponent },
 ];
 
 export const navigatableComponents = [
-    ItemsComponent,
-    ItemDetailComponent,
+    BourbonsComponent,
+    BourbonDetailComponent,
     LoginComponent
 ]
 

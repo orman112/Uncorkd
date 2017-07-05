@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
-import {User} from '../../shared/models/user.model';
-import {FirebaseService} from '../../shared/services/firebase.service';
+import {User} from '../../shared/models';
+import {FirebaseService} from '../../shared/services';
 import {RouterExtensions} from 'nativescript-angular/router/router-extensions';
 
 @Component({

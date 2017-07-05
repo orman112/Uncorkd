@@ -1,10 +1,10 @@
 import { Injectable } from "@angular/core";
 
-import { Item } from "../models/item.model";
+import { Bourbon } from "../models";
 
 @Injectable()
-export class ItemService {
-    private items = new Array<Item>(
+export class BourbonService {
+    private bourbons = new Array<Bourbon>(
         { id: 1, name: "Weller Antique", rating: 5.0 },
         { id: 3, name: "Weller Special Reserver", rating: 3.5 },
         { id: 4, name: "Blantons", rating: 4.0 },
@@ -30,11 +30,11 @@ export class ItemService {
         { id: 25, name: "Russell's Reserve", rating: 3.3 }
     );
 
-    getItems(): Item[] {
-        return this.items;
+    getItems(): Bourbon[] {
+        return this.bourbons;
     }
 
-    getItem(id: number): Item {
-        return this.items.filter(item => item.id === id)[0];
+    getItem(id: number): Bourbon {
+        return this.bourbons.filter(item => item.id === id)[0];
     }
 }

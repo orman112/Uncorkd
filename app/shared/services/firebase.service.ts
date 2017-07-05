@@ -1,5 +1,5 @@
 import {Injectable, NgZone} from '@angular/core';
-import {User, Item} from '../models';
+import {User, Bourbon} from '../models';
 import {Observable} from 'rxjs/Observable';
 import {Config} from '../config';
 import 'rxjs/add/operator/share';
@@ -12,7 +12,7 @@ export class FirebaseService {
 
     }
 
-    private _allItems: Array<Item> = [];
+    private _allItems: Array<Bourbon> = [];
 
     register(user: User) {
         return firebase.createUser({
