@@ -12,7 +12,7 @@ import { RouterExtensions } from 'nativescript-angular/router/router-extensions'
     styleUrls: ["./bourbons-common.css", "./bourbons.css"]
 })
 export class BourbonsComponent implements OnInit {
-    items: Observable<any>;
+    public items: Observable<any>;
 
     constructor(private bourbonService: BourbonService, private fireBaseService: FirebaseService, private routerExtensions: RouterExtensions) {
 
@@ -20,6 +20,7 @@ export class BourbonsComponent implements OnInit {
 
     ngOnInit(): void {
         this.items = <any>this.fireBaseService.getMyWishList();
+        console.dir("Bourbons: " + JSON.stringify(this.items));
         //this.items = this.itemService.getItems();
 
     }

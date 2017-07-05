@@ -1,7 +1,9 @@
 import {Injectable, NgZone} from '@angular/core';
 import {User, Bourbon} from '../models';
+import {BackendService} from '../services'
 import {Observable} from 'rxjs/Observable';
 import {Config} from '../config';
+import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 import 'rxjs/add/operator/share';
 
 import firebase = require('nativescript-plugin-firebase');
@@ -12,6 +14,7 @@ export class FirebaseService {
 
     }
 
+    items: BehaviorSubject<Array<Bourbon>> = new BehaviorSubject([]);
     private _allItems: Array<Bourbon> = [];
 
     register(user: User) {
@@ -54,9 +57,9 @@ export class FirebaseService {
         return new Observable((observer: any) => {
             let path = 'Bourbons';
             let onValueEvent = (snapshot: any) => {
+                console.log("Value: " + JSON.stringify(snapshot.value));
                 this.ngZone.run(() => {
                     let results = this.handleSnapshot(snapshot.value);
-                    console.log(JSON.stringify(results));
                     observer.next(results);
                 });
             };
@@ -65,6 +68,25 @@ export class FirebaseService {
     }
 
     handleSnapshot(data: any) {
+        //empty array, then refill and filter
+        this._allItems = [];
+        if(data) {
+            /*for (let id in data) {
+                console.log("Data: " + data[id]);
+                let result = (Object).assign({id: id}, data[id]);
+                console.log("Result: " + result);
+                this._allItems.push(result);
+            }*/
+            console.log("Data: " + data);
+            this._allItems.push(data);
+            console.log("All Items: " + this._allItems);
+            this.publishUpdates();
+        }
+        return this._allItems;
+    }
 
+    publishUpdates() {
+        this._allItems.sort();
+        this.items.next([...this._allItems]);
     }
 }
