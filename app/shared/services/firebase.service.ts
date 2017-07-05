@@ -1,13 +1,18 @@
 import {Injectable, NgZone} from '@angular/core';
-import {User} from '../models/user.model';
+import {User, Item} from '../models';
 import {Observable} from 'rxjs/Observable';
 import {Config} from '../config';
+import 'rxjs/add/operator/share';
 
 import firebase = require('nativescript-plugin-firebase');
 
 @Injectable()
 export class FirebaseService {
-    constructor() {}
+    constructor(private ngZone: NgZone) {
+
+    }
+
+    private _allItems: Array<Item> = [];
 
     register(user: User) {
         return firebase.createUser({
@@ -43,5 +48,23 @@ export class FirebaseService {
     logout() {
         Config.token = '';
         firebase.logout();
+    }
+
+    getMyWishList(): Observable<any> {
+        return new Observable((observer: any) => {
+            let path = 'Bourbons';
+            let onValueEvent = (snapshot: any) => {
+                this.ngZone.run(() => {
+                    let results = this.handleSnapshot(snapshot.value);
+                    console.log(JSON.stringify(results));
+                    observer.next(results);
+                });
+            };
+            firebase.addValueEventListener(onValueEvent, `/${path}`);
+        }).share();
+    }
+
+    handleSnapshot(data: any) {
+
     }
 }
