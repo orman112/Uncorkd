@@ -22,7 +22,7 @@ export class BourbonsComponent implements OnInit {
         this.items = <any>this.fireBaseService.getMyWishList();
         console.dir("Bourbons: " + JSON.stringify(this.items));
         //this.items = this.itemService.getItems();
-
+        this.fireBaseService.seedData();
     }
 
     logout() {

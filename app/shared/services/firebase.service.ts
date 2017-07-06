@@ -89,4 +89,21 @@ export class FirebaseService {
         this._allItems.sort();
         this.items.next([...this._allItems]);
     }
+
+    seedData() {
+        let onQueryEvent = (result) => {
+            if (!result.error && result.value === null) {
+                console.log("No errors or table exist, seeding data.");
+            }
+        }
+
+        let query = firebase.query(onQueryEvent, '/Bourbons', 
+            { 
+                singleEvent: true, 
+                orderBy: { 
+                    type: firebase.QueryOrderByType.KEY 
+                }
+            }
+        );
+    }
 }
