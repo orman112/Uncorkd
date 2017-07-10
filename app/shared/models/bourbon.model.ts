@@ -1,5 +1,8 @@
 export class Bourbon {
-    id: number;
-    name: string;
-    rating: number;
+    /**
+     *
+     */
+    constructor(public id: number, public name: string, public owner: string, public producer: string, public location: Location) {
+        
+    }
 }

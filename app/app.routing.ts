@@ -2,12 +2,13 @@ import { BourbonsComponent } from "./pages/bourbon/bourbons.component";
 import { BourbonDetailComponent } from "./pages/bourbon/bourbon-detail.component";
 import { LoginComponent } from "./pages/login/login.component";
 import { AuthGuard } from "./shared/services/auth-guard.service";
+import { FirebaseService } from "./shared/services";
 
 export const routes = [
     { path: "", component: BourbonsComponent, canActivate: [AuthGuard] },
     { path: "login", component: LoginComponent },
-    { path: "items", component: BourbonsComponent },
-    { path: "item/:id", component: BourbonDetailComponent },
+    { path: "bourbon", component: BourbonsComponent },
+    { path: "bourbon-detail/:id", component: BourbonDetailComponent },
 ];
 
 export const navigatableComponents = [
@@ -17,5 +18,6 @@ export const navigatableComponents = [
 ]
 
 export const providers = [
-    AuthGuard
+    AuthGuard,
+    FirebaseService
 ]

@@ -1,7 +1,15 @@
 <ActionBar title="Details" class="action-bar"></ActionBar>
-<GridLayout rows="auto, auto" columns="*, auto" class="page">
-    <Label row="0" col="0" class="h2" text="Name"></Label>
-    <Label row="0" col="1" class="h2" text="Rating"></Label>
-    <Label row="1" col="0" class="h2" [text]="item.name"></Label>
-    <Label row="1" col="1" class="h2" [text]="item.rating"></Label>
+<GridLayout columns="100, auto" rows="auto, auto, auto, auto" class="page">
+    <Label row="0" col="0" text="Name: "></Label>
+    <Label row="0" col="1" [text]="bourbon.name"></Label>
+    <Label row="1" col="0" text="Owner: "></Label>
+    <Label row="1" col="1" [text]="bourbon.owner"></Label>
+    <Label row="2" col="0" text="Producer: "></Label>
+    <Label row="2" col="1" [text]="bourbon.producer"></Label>
+    <Label row="3" col="0" text="Location: "></Label>
+    <Label row="3" col="1">
+        <Span [text]="bourbon.location.city"></Span>
+        <Span text=", "></Span>
+        <Span [text]="bourbon.location.state"></Span>
+    </Label>
 </GridLayout>

@@ -11,11 +11,11 @@ import firebase = require('nativescript-plugin-firebase');
 @Injectable()
 export class FirebaseService {
     constructor(private ngZone: NgZone) {
-
+        
     }
 
     items: BehaviorSubject<Array<Bourbon>> = new BehaviorSubject([]);
-    private _allItems: Array<Bourbon> = [];
+    private _allBourbons: Array<Bourbon> = [];
 
     register(user: User) {
         return firebase.createUser({
@@ -53,13 +53,13 @@ export class FirebaseService {
         firebase.logout();
     }
 
-    getMyWishList(): Observable<any> {
+    getAllBourbons(): Observable<any> {
         return new Observable((observer: any) => {
-            let path = 'Bourbons';
+            let path = 'bourbons';
             let onValueEvent = (snapshot: any) => {
-                console.log("Value: " + JSON.stringify(snapshot.value));
                 this.ngZone.run(() => {
                     let results = this.handleSnapshot(snapshot.value);
+                    //console.log(JSON.stringify(results));
                     observer.next(results);
                 });
             };
@@ -67,33 +67,40 @@ export class FirebaseService {
         }).share();
     }
 
+    logBourbons() {
+        console.log("All Bourbons: " + JSON.stringify(this._allBourbons));
+    }
+
+    getBourbon(id: number): Observable<any> {
+        return new Observable((observer: any) => {
+            console.log(this._allBourbons.filter(s => s.id === id)[0]);
+            observer.next(this._allBourbons.filter(s => s.id === id)[0]);
+        }).share();
+    }
+
     handleSnapshot(data: any) {
         //empty array, then refill and filter
-        this._allItems = [];
+        this._allBourbons = [];
         if(data) {
-            /*for (let id in data) {
-                console.log("Data: " + data[id]);
+            for (let id in data) {
                 let result = (Object).assign({id: id}, data[id]);
-                console.log("Result: " + result);
-                this._allItems.push(result);
-            }*/
-            console.log("Data: " + data);
-            this._allItems.push(data);
-            console.log("All Items: " + this._allItems);
+                this._allBourbons.push(result);
+            }
             this.publishUpdates();
         }
-        return this._allItems;
+        return this._allBourbons;
     }
 
     publishUpdates() {
-        this._allItems.sort();
-        this.items.next([...this._allItems]);
+        this._allBourbons.sort();
+        this.items.next([...this._allBourbons]);
     }
 
-    seedData() {
+    /*seedData() {
         let onQueryEvent = (result) => {
             if (!result.error && result.value === null) {
                 console.log("No errors or table exist, seeding data.");
+                //TODO: Dump seed data into firebase
             }
         }
 
@@ -105,5 +112,5 @@ export class FirebaseService {
                 }
             }
         );
-    }
+    }*/
 }
