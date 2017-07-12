@@ -1,9 +1,10 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
 import { Observable } from "rxjs/Observable";
 import { Bourbon } from "../../shared/models";
 import { FirebaseService, BackendService } from "../../shared/services";
 import { RouterExtensions } from 'nativescript-angular/router/router-extensions';
-import {Router} from '@angular/router';
+import { Router } from '@angular/router';
+import { ListView } from 'ui/list-view';
 
 @Component({
     selector: "ns-bourbons",
@@ -12,7 +13,8 @@ import {Router} from '@angular/router';
     styleUrls: ["./bourbons-common.css", "./bourbons.css"]
 })
 export class BourbonsComponent implements OnInit {
-    public items: Observable<any>;
+    public items: Observable<Bourbon>;
+    @ViewChild("bourbonList") bourbonList: ElementRef;
 
     constructor(private fireBaseService: FirebaseService, 
         private routerExtensions: RouterExtensions,
@@ -21,7 +23,19 @@ export class BourbonsComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.items = <any>this.fireBaseService.getAllBourbons();
+        this.items = <any>this.fireBaseService.getTenBourbons();        
+        //this.items = <any>this.fireBaseService.getAllBourbons();
+
+        let bourbonListView = <ListView>this.bourbonList.nativeElement;
+
+        /*bourbonListView.on(ListView.loadMoreItemsEvent, () => {
+            this.items = <any>this.fireBaseService.getTenBourbons();
+        });*/
+    }
+
+    loadMoreBourbon() {
+        alert('loading more bourbon');
+        this.items = <any>this.fireBaseService.getTenBourbons();
     }
 
     logout() {

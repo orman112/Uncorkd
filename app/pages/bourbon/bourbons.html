@@ -1,13 +1,13 @@
 <ActionBar title="Bourbons" class="action-bar">
     <ActionItem text="Logout" (tap)="logout()" ios.position="right"></ActionItem>
 </ActionBar>
-<GridLayout class="page" rows="auto, *">
+<GridLayout class="page" rows="auto, *, auto">
     <GridLayout row="0" columns="*, 125">
         <Label text="Bourbon Name" col="0"></Label>
         <Label text="Bourbon Rating" col="1"></Label>
     </GridLayout>
 
-    <ListView row="1" [items]="items | async" class="list-group">
+    <ListView #bourbonList row="1" [items]="items | async" class="list-group">
         <ng-template let-item="item">
             <GridLayout columns="*, 75">
                 <Label column="0" (tap)="viewDetail(item.id)" [text]="item.name"
@@ -16,4 +16,5 @@
             </GridLayout>
         </ng-template>
     </ListView>
+    <Button row="2" text="Load More" (tap)="loadMoreBourbon()"></Button>
 </GridLayout>
