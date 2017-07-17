@@ -1,6 +1,6 @@
-import { BourbonsComponent } from "./pages/bourbon/bourbons.component";
-import { BourbonDetailComponent } from "./pages/bourbon/bourbon-detail.component";
-import { LoginComponent } from "./pages/login/login.component";
+import { BourbonsComponent } from "./views/bourbon/bourbons.component";
+import { BourbonDetailComponent } from "./views/bourbon/bourbon-detail.component";
+import { LoginComponent } from "./views/login/login.component";
 import { AuthGuard } from "./shared/services/auth-guard.service";
 import { FirebaseService } from "./shared/services";
 

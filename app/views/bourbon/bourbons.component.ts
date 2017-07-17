@@ -5,6 +5,7 @@ import { FirebaseService, BackendService } from "../../shared/services";
 import { RouterExtensions } from 'nativescript-angular/router/router-extensions';
 import { Router } from '@angular/router';
 import { ListView } from 'ui/list-view';
+import { FooterComponent } from '../footer/footer.component';
 
 @Component({
     selector: "ns-bourbons",
@@ -28,13 +29,15 @@ export class BourbonsComponent implements OnInit {
 
         let bourbonListView = <ListView>this.bourbonList.nativeElement;
 
+        this.fireBaseService.logBourbons();
+
         /*bourbonListView.on(ListView.loadMoreItemsEvent, () => {
             this.items = <any>this.fireBaseService.getTenBourbons();
         });*/
     }
 
     loadMoreBourbon() {
-        alert('loading more bourbon');
+        //this.fireBaseService.logBourbons();
         this.items = <any>this.fireBaseService.getTenBourbons();
     }
 

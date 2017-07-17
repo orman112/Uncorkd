@@ -58,45 +58,50 @@ export class FirebaseService {
         return new Observable((observer: any) => {
             let path = 'bourbons';
             let onValueEvent = (snapshot: any) => {
-                this.ngZone.run(() => {
-                    let results = this.handleSnapshot(snapshot.value);
-                    console.log(snapshot.value);
-                    observer.next(results);
-                });
+                let results = this.handleSnapshot(snapshot.value, observer);
             };
             firebase.addValueEventListener(onValueEvent, `/${path}`);
         }).share();
     }
 
     getTenBourbons(): Observable<any> {
+        let lastBourbon = this.getLastBourbon();
+
         return new Observable((observer: any) => {
             let path = 'bourbons'; 
-            let count = this._bourbonCount;
-            console.log('Initial Count: ' + count);
             let onValueEvent = (data: any) => {
-                this.ngZone.run(() => {
-                    this._allBourbons.push(data.value);
-                    this.publishUpdates();
-                    observer.next(this._allBourbons);
-                    this._bourbonCount++;
-                    console.log('Count: ' + this._bourbonCount);
-                });
+                let result = this.handleSnapshot(data, observer);
             };
-            firebase.query(onValueEvent, `/${path}`, {
-                orderBy: {
-                    type: firebase.QueryOrderByType.KEY
-                },
-                ranges: [
-                    {
-                        type: firebase.QueryRangeType.START_AT,
-                        value: count.toString()
+
+            //if bourbon has been loaded, add the last one to the start_at range
+            if (lastBourbon) {
+                firebase.query(onValueEvent, `/${path}`, {
+                    orderBy: {
+                        type: firebase.QueryOrderByType.CHILD,
+                        value: 'name'
                     },
-                    {
-                        type: firebase.QueryRangeType.END_AT,
-                        value: `${count + 3}`
+                    limit: {
+                        type: firebase.QueryLimitType.FIRST,
+                        value: 10
+                    },
+                    range: {
+                        type: firebase.QueryRangeType.START_AT,
+                        value: lastBourbon.name
                     }
-                ]
-            });
+                });            
+            }
+            else {
+                firebase.query(onValueEvent, `/${path}`, {
+                    orderBy: {
+                        type: firebase.QueryOrderByType.CHILD,
+                        value: 'name'
+                    },
+                    limit: {
+                        type: firebase.QueryLimitType.FIRST,
+                        value: 10
+                    }
+                });              
+            }
         }).share();
     }
 
@@ -109,19 +114,33 @@ export class FirebaseService {
             console.log(this._allBourbons.filter(s => s.id === id)[0]);
             observer.next(this._allBourbons.filter(s => s.id === id)[0]);
         }).share();
-    } 
+    }
+    
+    getLastBourbon() {
+        return this._allBourbons.pop();
+    }
 
-    handleSnapshot(data: any) {
+    handleSnapshot(data: any, observer: any) {
         //empty array, then refill and filter
-        /*if(data) {
+        if(data.length) {
             this._allBourbons = [];
-            for (let id in data) {
-                let result = (Object).assign({id: id}, data[id]);
-                this._allBourbons.push(result);
-            }
-        }*/
-        this._allBourbons.push(data);
-        this.publishUpdates();
+            this.ngZone.run(() => {
+                this._allBourbons = [];
+                for (let id in data) {
+                    let result = (Object).assign({id: id}, data[id]);
+                    this._allBourbons.push(result);
+                }
+                observer.next(this._allBourbons);
+                this.publishUpdates()
+            });
+        }
+        else {
+            this.ngZone.run(() => {
+                this._allBourbons.push(data.value);
+                this.publishUpdates();
+                observer.next(this._allBourbons);
+            });
+        }
         return this._allBourbons;
     }
 
