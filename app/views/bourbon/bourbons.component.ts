@@ -5,10 +5,9 @@ import { FirebaseService, BackendService } from "../../shared/services";
 import { RouterExtensions } from 'nativescript-angular/router/router-extensions';
 import { Router } from '@angular/router';
 import { ListView } from 'ui/list-view';
-import { FooterComponent } from '../footer/footer.component';
 
 @Component({
-    selector: "ns-bourbons",
+    selector: "uc-bourbons",
     moduleId: module.id,
     templateUrl: "./bourbons.html",
     styleUrls: ["./bourbons-common.css", "./bourbons.css"]

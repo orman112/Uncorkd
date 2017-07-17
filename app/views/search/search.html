@@ -1,0 +1,18 @@
+<ActionBar title="Search" class="action-bar"></ActionBar>
+
+<GridLayout rows="auto, *">
+    <StackLayout row="0" class="search">
+        <GridLayout columns="*,auto">
+            <TextField col="0" hint="Name"></TextField>
+            <Label col="1" text="&#xf002;" class="icon"></Label>
+        </GridLayout>
+    </StackLayout>
+
+    <ListView row="1">
+        <ng-template let-item="item">
+            <GridLayout columns="*, auto">
+                
+            </GridLayout>
+        </ng-template>
+    </ListView>
+</GridLayout>

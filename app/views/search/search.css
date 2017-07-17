@@ -1,0 +1,13 @@
+.search {
+  background-color: #CB1D00;
+  padding: 5 10;
+}
+.search GridLayout {
+  background-color: rgba(255, 255, 255, .6);
+  margin: 0 25;
+}
+.search Label {
+  height: 15;
+  vertical-align: center;
+  margin: 0 10;
+}

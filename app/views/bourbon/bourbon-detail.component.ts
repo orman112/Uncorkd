@@ -5,7 +5,7 @@ import { Bourbon } from "../../shared/models";
 import { FirebaseService } from "../../shared/services";
 
 @Component({
-    selector: "ns-details",
+    selector: "uc-details",
     moduleId: module.id,
     templateUrl: "./bourbon-detail.html",
     styleUrls: ["./bourbons-common.css", "./bourbons.css"]

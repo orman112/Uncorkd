@@ -1,5 +1,5 @@
-<GridLayout columns='auto,auto,auto'>
-    <Button col='0' text='Wish List'></Button>
-    <Button col='1' text='Search'></Button>
-    <Button col='2' text='Account'></Button>
+<GridLayout row="2" columns='*,*,*'>
+    <Button col='0' text='Wish List' [nsRouterLink]="['/']"></Button>
+    <Button col='1' text='Search' [nsRouterLink]="['/search']"></Button>
+    <Button col='2' text='Account' [nsRouterLink]="['/']"></Button>
 </GridLayout>

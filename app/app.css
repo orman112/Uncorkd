@@ -30,3 +30,6 @@ ActionBar {
 .medium-spacing {
     margin: 10;
 }
+.icon {
+    font-family: 'FontAwesome'
+}
