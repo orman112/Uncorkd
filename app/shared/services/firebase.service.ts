@@ -17,6 +17,7 @@ export class FirebaseService {
     items: BehaviorSubject<Array<Bourbon>> = new BehaviorSubject([]);
     private _allBourbons: Array<Bourbon> = [];
     private _bourbonCount = 0;
+    private path = 'bourbons'; 
 
     register(user: User) {
         return firebase.createUser({
@@ -56,11 +57,10 @@ export class FirebaseService {
 
     getAllBourbons(): Observable<any> {
         return new Observable((observer: any) => {
-            let path = 'bourbons';
             let onValueEvent = (snapshot: any) => {
                 let results = this.handleSnapshot(snapshot.value, observer);
             };
-            firebase.addValueEventListener(onValueEvent, `/${path}`);
+            firebase.addValueEventListener(onValueEvent, `/${this.path}`);
         }).share();
     }
 
@@ -68,14 +68,13 @@ export class FirebaseService {
         let lastBourbon = this.getLastBourbon();
 
         return new Observable((observer: any) => {
-            let path = 'bourbons'; 
             let onValueEvent = (data: any) => {
                 let result = this.handleSnapshot(data, observer);
             };
 
             //if bourbon has been loaded, add the last one to the start_at range
             if (lastBourbon) {
-                firebase.query(onValueEvent, `/${path}`, {
+                firebase.query(onValueEvent, `/${this.path}`, {
                     orderBy: {
                         type: firebase.QueryOrderByType.CHILD,
                         value: 'name'
@@ -91,7 +90,7 @@ export class FirebaseService {
                 });            
             }
             else {
-                firebase.query(onValueEvent, `/${path}`, {
+                firebase.query(onValueEvent, `/${this.path}`, {
                     orderBy: {
                         type: firebase.QueryOrderByType.CHILD,
                         value: 'name'
@@ -102,6 +101,28 @@ export class FirebaseService {
                     }
                 });              
             }
+        }).share();
+    }
+
+    searchByName(name: string) {
+        this._allBourbons = [];
+
+        return new Observable((observer: any) => {
+            let onValueEvent = (data: any) => {
+                console.log(data);
+                let result = this.handleSnapshot(data, observer);
+            };
+
+            firebase.query(onValueEvent, `/${this.path}`, {
+                orderBy: {
+                    type: firebase.QueryOrderByType.CHILD,
+                    value: 'name'
+                },
+                range: {
+                    type: firebase.QueryRangeType.EQUAL_TO,
+                    value: name
+                }
+            });   
         }).share();
     }
 
