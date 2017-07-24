@@ -3,6 +3,7 @@ import { BourbonDetailComponent } from "./views/bourbon/bourbon-detail.component
 import { LoginComponent } from "./views/login/login.component";
 import { FooterComponent } from "./views/footer/footer.component";
 import { SearchComponent } from "./views/search/search.component";
+import { AccountComponent } from "./views/account/account.component";
 import { AuthGuard } from "./shared/services/auth-guard.service";
 import { FirebaseService } from "./shared/services";
 
@@ -11,7 +12,8 @@ export const routes = [
     { path: "login", component: LoginComponent },
     { path: "bourbon", component: BourbonsComponent },
     { path: "bourbon-detail/:id", component: BourbonDetailComponent },
-    { path: "search", component: SearchComponent }
+    { path: "search", component: SearchComponent },
+    { path: "account", component: AccountComponent }
 ];
 
 export const navigatableComponents = [
@@ -19,7 +21,8 @@ export const navigatableComponents = [
     BourbonDetailComponent,
     LoginComponent,
     FooterComponent,
-    SearchComponent
+    SearchComponent,
+    AccountComponent
 ]
 
 export const providers = [

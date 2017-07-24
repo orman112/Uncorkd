@@ -173,4 +173,8 @@ export class FirebaseService {
         }); 
         this.items.next([...this._allBourbons]);
     }
+
+    getCurrentUser() {
+        return firebase.getCurrentUser();
+    }
 }
