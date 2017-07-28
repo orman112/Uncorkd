@@ -4,12 +4,11 @@ import { User } from '../../shared/models';
 import {Observable} from 'rxjs/Observable';
 
 @Component({
-    selector: "uc-account",
-    templateUrl: "./views/account/account.html",
-    styleUrls: ["./views/account/account.css"]
+    selector: "uc-update-account",
+    templateUrl: "./views/update-account/update-account.html"
 })
 
-export class AccountComponent implements OnInit {
+export class UpdateAccountComponent implements OnInit {
     constructor(
         private fireBaseService: FirebaseService,
         private ngZone: NgZone
@@ -17,8 +16,10 @@ export class AccountComponent implements OnInit {
     public user: User; 
 
     ngOnInit(): void {
-        this.fireBaseService.getCurrentUser().subscribe((user) => {
-            this.user = new User(user.email, user.password);
-        });
+        // this.fireBaseService.getCurrentUser().subscribe((user) => {
+        //     this.ngZone.run(() => {
+        //         this.user = user;
+        //     });
+        // });
     }
 }

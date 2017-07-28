@@ -174,7 +174,16 @@ export class FirebaseService {
         this.items.next([...this._allBourbons]);
     }
 
-    getCurrentUser() {
-        return firebase.getCurrentUser();
+    getCurrentUser(): Observable<any> {
+        return new Observable((observer: any) => {
+            firebase.getCurrentUser()
+            .then(function(result: any) {
+                observer.next(result);
+                return result;
+            },
+            function(errorMessage: any) {
+                alert(errorMessage);
+            });
+        }).share();
     }
 }

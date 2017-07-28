@@ -17,9 +17,7 @@ export class LoginComponent {
     isAuthenticating = false;
 
     constructor(private fireBaseService: FirebaseService, private routerExtensions: RouterExtensions) {
-        this.user = new User();
-        this.user.email = 'corman.dev@gmail.com';
-        this.user.password = 'Welcome1';
+        this.user = new User('corman.dev@gmail.com', 'Welcome1');
     }
 
     submit() {
