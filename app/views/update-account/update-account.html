@@ -11,17 +11,26 @@
     <Label row="2" col="1" [text]="email.phoneNumber"></Label>
 </GridLayout> -->
 
-<StackLayout orientation="vertical" horizontalAlignment="center" verticalAlignment="center" minHeight="100">
+<!-- <StackLayout orientation="vertical" horizontalAlignment="center" verticalAlignment="center" minHeight="100">
     <StackLayout orientation="horizontal">
         <Label text="Email: "></Label>
-        <Label [text]="user.email"></Label>
+        <TextField [(ngModel)]="user.email"></TextField>
     </StackLayout>    
     <StackLayout orientation="horizontal">
         <Label text="Name: "></Label>
         <TextField [(ngModel)]="user.name"></TextField>
     </StackLayout>    
     <StackLayout orientation="horizontal">
-        <!-- <Label text="Phone Number: "></Label>
-        <Label [text]="email.phoneNumber"></Label> -->
+         <Label text="Phone Number: "></Label>
+        <Label [text]="email.phoneNumber"></Label> 
     </StackLayout>
+</StackLayout> -->
+
+<StackLayout orientation="vertical" horizontalAlignment="center" verticalAlignment="center" minHeight="100">
+    <Label text="Email: "></Label>
+    <TextField [(ngModel)]="user.email"></TextField>
+    <Label text="Name: "></Label>
+    <TextField [(ngModel)]="user.name"></TextField>
+    <!-- <Label text="Phone Number: "></Label>
+    <Label [text]="email.phoneNumber"></Label>  -->
 </StackLayout>

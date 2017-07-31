@@ -6,7 +6,8 @@ import { Config } from '../../shared/config';
 
 @Component({
     selector: "uc-update-account",
-    templateUrl: "./views/update-account/update-account.html"
+    templateUrl: "./views/update-account/update-account.html",
+    styleUrls: ['./views/update-account/update-account.css']    
 })
 
 export class UpdateAccountComponent implements OnInit {
