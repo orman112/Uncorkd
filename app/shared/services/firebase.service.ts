@@ -44,12 +44,13 @@ export class FirebaseService {
         })
         .then((result: any) => {
             Config.token = result.uid;
+            console.log("User Info: " + JSON.stringify(result));
             return JSON.stringify(result);
         }, (errorMessage: any) => {
             alert(errorMessage);
         })
     }
-
+ 
     logout() {
         Config.token = '';
         firebase.logout();
@@ -174,16 +175,18 @@ export class FirebaseService {
         this.items.next([...this._allBourbons]);
     }
 
-    getCurrentUser(): Observable<any> {
-        return new Observable((observer: any) => {
-            firebase.getCurrentUser()
-            .then(function(result: any) {
-                observer.next(result);
-                return result;
-            },
-            function(errorMessage: any) {
-                alert(errorMessage);
-            });
-        }).share();
+    getCurrentUser(): any {
+        return firebase.getCurrentUser();
+
+        // return new Observable((observer: any) => {
+        //     firebase.getCurrentUser()
+        //     .then(function(result: any) {
+        //         observer.next(result);
+        //         return result; 
+        //     },
+        //     function(errorMessage: any) {
+        //         alert(errorMessage);
+        //     });
+        // }).share();
     }
 }

@@ -1,7 +1,8 @@
 import { Component, OnInit, NgZone } from "@angular/core";
-import { FirebaseService, BackendService } from "../../shared/services";
+import { FirebaseService } from "../../shared/services";
 import { User } from '../../shared/models';
-import {Observable} from 'rxjs/Observable';
+import { Observable } from 'rxjs/Observable';
+import { Config } from '../../shared/config';
 
 @Component({
     selector: "uc-update-account",
@@ -16,10 +17,6 @@ export class UpdateAccountComponent implements OnInit {
     public user: User; 
 
     ngOnInit(): void {
-        // this.fireBaseService.getCurrentUser().subscribe((user) => {
-        //     this.ngZone.run(() => {
-        //         this.user = user;
-        //     });
-        // });
+        this.user = Config.user;
     }
 }

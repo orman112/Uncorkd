@@ -32,7 +32,7 @@ export class LoginComponent {
         this.fireBaseService.login(this.user)
         .then(() => {
             this.isAuthenticating = false;
-            this.routerExtensions.navigate(['items'], { clearHistory: true });
+            this.routerExtensions.navigate(['bourbon'], { clearHistory: true });
         })
         .catch((message: any) => {
             this.isAuthenticating = false;

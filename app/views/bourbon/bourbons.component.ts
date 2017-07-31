@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
 import { Observable } from "rxjs/Observable";
 import { Bourbon } from "../../shared/models";
-import { FirebaseService, BackendService } from "../../shared/services";
+import { FirebaseService } from "../../shared/services";
 import { RouterExtensions } from 'nativescript-angular/router/router-extensions';
 import { Router } from '@angular/router';
 import { ListView } from 'ui/list-view';
@@ -23,7 +23,7 @@ export class BourbonsComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.items = <any>this.fireBaseService.getTenBourbons();        
+        this.items = <any>this.fireBaseService.getTenBourbons();
         //this.items = <any>this.fireBaseService.getAllBourbons();
 
         let bourbonListView = <ListView>this.bourbonList.nativeElement;
@@ -36,13 +36,13 @@ export class BourbonsComponent implements OnInit {
     }
 
     loadMoreBourbon() {
-        //this.fireBaseService.logBourbons();
         this.items = <any>this.fireBaseService.getTenBourbons();
     }
 
     logout() {
         this.fireBaseService.logout();
         this.routerExtensions.navigate(['login'], { clearHistory: true });        
+        //this.router.navigate(["/login"]);
     }
 
 
