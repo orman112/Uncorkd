@@ -1,8 +1,8 @@
-import {Component} from '@angular/core';
-import {Observable} from 'rxjs/Observable';
-import {User} from '../../shared/models';
-import {FirebaseService} from '../../shared/services';
-import {RouterExtensions} from 'nativescript-angular/router/router-extensions';
+import { Component } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import { User } from '../../shared/models';
+import { FirebaseService } from '../../shared/services';
+import { RouterExtensions } from 'nativescript-angular/router/router-extensions';
 
 @Component({
     moduleId: module.id,

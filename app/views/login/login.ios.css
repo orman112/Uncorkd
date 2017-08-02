@@ -1,5 +1,5 @@
-StackLayout {
-  height: 305;
+.login-container {
+  background-color: orange;
 }
 Button {
   height: 40;

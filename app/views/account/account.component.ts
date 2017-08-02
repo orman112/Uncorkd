@@ -19,12 +19,5 @@ export class AccountComponent implements OnInit {
 
     ngOnInit(): void {
         this.user = Config.user;
-        // this.fireBaseService.getCurrentUser()
-        // .then(user => {
-        //     this.user = user;
-        // })
-        // .catch(error => {
-        //     console.log(error);
-        // });        
     }
 }

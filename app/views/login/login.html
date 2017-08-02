@@ -1,7 +1,9 @@
-<StackLayout>
-    <TextField hint="Email Address" keyboardType="email" [(ngModel)]="user.email" autocorrect="false" autocapitalizationType="none"></TextField>
-    <TextField hint="Password" secure="True" [(ngModel)]="user.password"></TextField>
+<GridLayout rows='*,auto,150' class="container" verticalAlignment="center">
+    <StackLayout row="1">
+        <TextField hint="Email Address" keyboardType="email" [(ngModel)]="user.email" autocorrect="false" autocapitalizationType="none"></TextField>
+        <TextField hint="Password" secure="True" [(ngModel)]="user.password"></TextField>
 
-    <Button [text]="isLoggingIn ? 'Sign In' : 'Sign Up'" class="submit-button" (tap)="submit()"></Button>
-    <Button [text]="isLoggingIn ? 'Sign Up' : 'Back to Login'" (tap)="toggleDisplay()"></Button>
-</StackLayout>
+        <Button [text]="isLoggingIn ? 'Sign In' : 'Sign Up'" class="submit-button" (tap)="submit()"></Button>
+        <Button [text]="isLoggingIn ? 'Sign Up' : 'Back to Login'" (tap)="toggleDisplay()"></Button>
+    </StackLayout>
+</GridLayout>
