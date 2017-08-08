@@ -12,14 +12,24 @@ refer to http://docs.nativescript.org/ui/theme.
 @import 'nativescript-theme-core/css/core.light.css';
 @import url('~/platform.css');
 
+Page {
+    background-image: url('res://uncorked-interior');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
 
 TextField {
     padding: 10;
+    color: #541411;
+    border-radius: 2%;
 }
 
-ActionBar {
-    background-color: black;
-    color: white;
+Button {
+    background-color: #F7F3E3;
+    color: #541411;
+    font-weight: bold;
+    border-radius: 2%;
 }
 
 .small-spacing {

@@ -1,9 +1,8 @@
-<GridLayout rows='*,auto,150' class="container" verticalAlignment="center">
-    <StackLayout row="1">
+<GridLayout rows='*,auto,200' class="container" verticalAlignment="center">
+    <StackLayout row="2">
         <TextField hint="Email Address" keyboardType="email" [(ngModel)]="user.email" autocorrect="false" autocapitalizationType="none"></TextField>
         <TextField hint="Password" secure="True" [(ngModel)]="user.password"></TextField>
-
         <Button [text]="isLoggingIn ? 'Sign In' : 'Sign Up'" class="submit-button" (tap)="submit()"></Button>
-        <Button [text]="isLoggingIn ? 'Sign Up' : 'Back to Login'" (tap)="toggleDisplay()"></Button>
+        <Label [text]="isLoggingIn ? 'Sign Up' : 'Back to Login'" class="login-link" (tap)="toggleDisplay()"></Label>
     </StackLayout>
 </GridLayout>

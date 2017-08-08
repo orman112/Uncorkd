@@ -1,19 +1,23 @@
-<ActionBar title="Account" class="action-bar">
-    <ActionItem text="Logout" (tap)="logout()" ios.position="right"></ActionItem>
-</ActionBar>
-
- <StackLayout orientation="vertical" horizontalAlignment="center" verticalAlignment="center" minHeight="100">
-    <StackLayout orientation="horizontal">
-        <Label text="Email: "></Label>
-        <Label [text]="user.email"></Label>
-    </StackLayout>    
-    <StackLayout orientation="horizontal">
-        <Label text="Name: "></Label>
-        <Label></Label>
-    </StackLayout>    
-    <StackLayout orientation="horizontal">
-         <Label text="Phone Number: "></Label>
-        <Label></Label> 
+<GridLayout rows="*, auto">
+    <StackLayout row="0" orientation="vertical" horizontalAlignment="center" verticalAlignment="center" minHeight="100">
+        <StackLayout orientation="horizontal">
+            <Label text="Email: "></Label>
+            <Label [text]="user.email"></Label>
+        </StackLayout>
+        <StackLayout orientation="horizontal">
+            <Label text="Name: "></Label>
+            <Label></Label>
+        </StackLayout>    
+        <StackLayout orientation="horizontal">
+            <Label text="Phone Number: "></Label>
+            <Label></Label> 
+        </StackLayout>
+        <StackLayout>
+            <Button text="Update Information" [nsRouterLink]="['/update-account']" clearHistory="true"></Button>
+            <Label class="logout-link" text="Logout" (tap)="logout()"></Label>
+        </StackLayout>
     </StackLayout>
-    <Button text="Update Information" [nsRouterLink]="['/update-account']"></Button>
-</StackLayout> 
+    <StackLayout row="1">
+         <uc-footer></uc-footer>
+    </StackLayout>
+</GridLayout>

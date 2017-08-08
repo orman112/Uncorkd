@@ -13,14 +13,19 @@ Image {
 }
 
 Button, TextField {
-    margin-left: 16;
-    margin-right: 16;
-    margin-bottom: 10;
-    background-color: white;
+    margin: 0, 16, 10;
+    background-color: #F7F3E3;
 }
 
 .submit-button {
-    background-color: #CB1D00;
-    color: white;
-    margin-top: 20;
+    width: 50%;
+}
+
+.login-link {
+    color: #F7F3E3;
+    horizontal-align: center;
+}
+
+Button {
+  height: 40;
 }

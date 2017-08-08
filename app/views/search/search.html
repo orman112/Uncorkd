@@ -1,9 +1,10 @@
-<ActionBar title="Search" class="action-bar"></ActionBar>
+<ActionBar title="Search" class="action-bar">
+</ActionBar>
 
 <GridLayout rows="auto, *, auto">
     <StackLayout row="0" class="search">
-        <GridLayout columns="*,auto">
-            <TextField col="0" [(ngModel)]="bourbon" hint="Name"></TextField>
+        <GridLayout columns="*,auto" class="search-container">
+            <TextField col="0" [(ngModel)]="bourbon" hint="Name" class="search-text"></TextField>
             <Label col="1" text="&#xf002;" (tap)="searchBourbons()" class="icon"></Label>
         </GridLayout>
     </StackLayout>

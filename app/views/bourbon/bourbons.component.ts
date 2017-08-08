@@ -2,9 +2,11 @@ import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
 import { Observable } from "rxjs/Observable";
 import { Bourbon } from "../../shared/models";
 import { FirebaseService } from "../../shared/services";
-import { RouterExtensions } from 'nativescript-angular/router/router-extensions';
 import { Router } from '@angular/router';
 import { ListView } from 'ui/list-view';
+import * as utils from "utils/utils";
+
+declare var UIColor: any;
 
 @Component({
     selector: "uc-bourbons",
@@ -16,8 +18,7 @@ export class BourbonsComponent implements OnInit {
     public items: Observable<Bourbon>;
     @ViewChild("bourbonList") bourbonList: ElementRef;
 
-    constructor(private fireBaseService: FirebaseService, 
-        private routerExtensions: RouterExtensions,
+    constructor(private fireBaseService: FirebaseService,
         private router: Router) {
 
     }
@@ -35,14 +36,16 @@ export class BourbonsComponent implements OnInit {
         });*/
     }
 
-    loadMoreBourbon() {
-        this.items = <any>this.fireBaseService.getTenBourbons();
+    makeBackgroundTransparent(args) {
+        let cell = args.ios;
+        if (cell) {
+            // support XCode 8
+            cell.backgroundColor = utils.ios.getter(UIColor, UIColor.clearColor);
+        }
     }
 
-    logout() {
-        this.fireBaseService.logout();
-        this.routerExtensions.navigate(['login'], { clearHistory: true });        
-        //this.router.navigate(["/login"]);
+    loadMoreBourbon() {
+        this.items = <any>this.fireBaseService.getTenBourbons();
     }
 
 

@@ -1,3 +1,9 @@
-TextField {
-    margin: 10 0;
+Button, TextField {
+    background-color: #F7F3E3;
+    margin: 0, 16, 10;
+    padding: 15;
+}
+
+Label {
+    color: #F7F3E3;
 }

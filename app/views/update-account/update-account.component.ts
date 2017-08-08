@@ -20,4 +20,9 @@ export class UpdateAccountComponent implements OnInit {
     ngOnInit(): void {
         this.user = Config.user;
     }
+
+    updateAccountInformation() {
+        console.log(JSON.stringify(this.user.name));
+        //TODO: UPDATE USER PROFILE
+    }
 }

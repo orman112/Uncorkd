@@ -1,13 +1,19 @@
 .search {
-  background-color: #CB1D00;
+  background-color: #B13729;
   padding: 5 10;
 }
-.search GridLayout {
-  background-color: rgba(255, 255, 255, .6);
+.search-container {
+  background-color: rgba(212, 144, 120, .6);
   margin: 0 25;
+  border-radius: 2%;
 }
-.search Label {
+
+.search-text {
+}
+
+.icon {
   height: 15;
   vertical-align: center;
   margin: 0 10;
+  color: white;
 }

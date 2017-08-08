@@ -1,5 +1,14 @@
-Button {
-    background-color: #CB1D00;
-    color: white;
+Button, TextField {
+    background-color: #F7F3E3;
     margin-top: 20;
+    padding: 15 0;
+}
+
+Label {
+    color: #F7F3E3;
+}
+
+.logout-link {
+    horizontal-align: center;
+    margin-top: 15px;
 }

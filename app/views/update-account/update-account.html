@@ -1,36 +1,13 @@
-<ActionBar title="Account" class="action-bar">
-    <ActionItem text="Logout" (tap)="logout()" ios.position="right"></ActionItem>
-</ActionBar>
-
-<!-- <GridLayout verticalAligment="center" columns="100, auto" rows="auto, auto, auto" class="page">
-    <Label row="0" col="0" text="Email: "></Label>
-    <Label row="0" col="1" [text]="user.email"></Label>
-    <Label row="1" col="0" text="Name: "></Label>
-    <Label row="1" col="1" [text]="user.name"></Label>
-    <Label row="2" col="0" text="Phone Number: "></Label>
-    <Label row="2" col="1" [text]="email.phoneNumber"></Label>
-</GridLayout> -->
-
-<!-- <StackLayout orientation="vertical" horizontalAlignment="center" verticalAlignment="center" minHeight="100">
-    <StackLayout orientation="horizontal">
-        <Label text="Email: "></Label>
-        <TextField [(ngModel)]="user.email"></TextField>
-    </StackLayout>    
-    <StackLayout orientation="horizontal">
-        <Label text="Name: "></Label>
-        <TextField [(ngModel)]="user.name"></TextField>
-    </StackLayout>    
-    <StackLayout orientation="horizontal">
-         <Label text="Phone Number: "></Label>
-        <Label [text]="email.phoneNumber"></Label> 
+<GridLayout rows="*, auto">
+    <StackLayout row="0" orientation="vertical" verticalAlignment="center" minHeight="100">
+        <TextField [(ngModel)]="user.email" hint="Email Address" autocorrect="false" autocapitalizationType="none"></TextField>
+        <TextField [(ngModel)]="user.name" hint="Name" autocorrect="false" autocapitalizationType="none"></TextField>
+        <!-- <Label text="Phone Number: "></Label>
+        <Label [text]="email.phoneNumber"></Label>  -->
+        <Button text="Update Information" (tap)="updateAccountInformation()"></Button>
     </StackLayout>
-</StackLayout> -->
 
-<StackLayout orientation="vertical" horizontalAlignment="center" verticalAlignment="center" minHeight="100">
-    <Label text="Email: "></Label>
-    <TextField [(ngModel)]="user.email"></TextField>
-    <Label text="Name: "></Label>
-    <TextField [(ngModel)]="user.name"></TextField>
-    <!-- <Label text="Phone Number: "></Label>
-    <Label [text]="email.phoneNumber"></Label>  -->
-</StackLayout>
+    <StackLayout row="1">
+         <uc-footer></uc-footer>
+    </StackLayout>
+</GridLayout>
