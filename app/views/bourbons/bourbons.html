@@ -1,9 +1,9 @@
 <GridLayout rows="*, auto">
     <ListView #bourbonList row="0" [items]="items | async" class="bourbon-list-group" separatorColor="transparent" (itemLoading)="makeBackgroundTransparent($event)">
         <ng-template let-item="item">
-            <GridLayout id="bourbon-item" class="bourbon-list-item" (tap)="viewDetail(item.id)" columns="*, 75">
+            <GridLayout id="bourbon-item" class="bourbon-list-item" (tap)="viewDetail(item.id)" columns="*, auto">
                 <Label class="bourbon-name" column="0" [text]="item.name"></Label>
-                <Image class="bourbon-image" [src]="item.imageUrl" col="1"></Image>
+                <Image class="bourbon-image" [src]="item.imageUrl" col="1" height="75" width="100"></Image>
             </GridLayout>
         </ng-template>
     </ListView>

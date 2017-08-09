@@ -47,13 +47,12 @@ Button {
 
 .bourbon-list-item {
   background-color: rgba(0, 0, 0, .7);
-  margin: 15 0;
+  margin: 25 0;
   padding: 10 0 10 25;
 } 
 
 .bourbon-list-group {
     background-color: transparent;
-    border-color: green;
 }
 
 .bourbon-name {
@@ -63,7 +62,7 @@ Button {
 }
 
 .bourbon-image {
-    
+    horizontal-align:right
 }
 
 .header {
