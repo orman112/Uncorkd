@@ -8,7 +8,7 @@ import { FirebaseService } from "../../shared/services";
     selector: "uc-details",
     moduleId: module.id,
     templateUrl: "./bourbon-detail.html",
-    styleUrls: ["./bourbons-common.css", "./bourbons.css"]
+    styleUrls: ["../bourbons/bourbons-common.css", "../bourbons/bourbons.css"]
 })
 export class BourbonDetailComponent implements OnInit {
     bourbon: Bourbon;

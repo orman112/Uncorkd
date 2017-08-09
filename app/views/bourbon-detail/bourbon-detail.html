@@ -1,0 +1,12 @@
+<ActionBar title="Details" class="action-bar"></ActionBar>
+<GridLayout rows="*,auto">
+    <GridLayout row="0" columns="100, auto" rows="auto, auto, auto, auto" class="page">
+        <Label class="bourbon-name" row="0" col="1" [text]="bourbon.name"></Label>
+        <Label row="1" col="1" text="{{'Owner: ' + bourbon.owner}}"></Label>
+        <Label row="2" col="1" text="{{'Producer: ' + bourbon.producer}}"></Label>
+        <Label row="3" col="1" text="{{'Location: ' + bourbon.location.city + ', ' + bourbon.location.state}}"></Label>
+    </GridLayout>
+    <StackLayout row="1">
+        <uc-footer></uc-footer>
+    </StackLayout>
+</GridLayout>
