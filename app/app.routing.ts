@@ -6,7 +6,7 @@ import { SearchComponent } from "./views/search/search.component";
 import { AccountComponent } from "./views/account/account.component";
 import { UpdateAccountComponent } from "./views/update-account/update-account.component";
 import { AuthGuard } from "./shared/services/auth-guard.service";
-import { FirebaseService } from "./shared/services";
+import { FirebaseService, BourbonService } from "./shared/services";
 
 export const routes = [
     { path: "", component: BourbonsComponent, canActivate: [AuthGuard] },
@@ -30,5 +30,6 @@ export const navigatableComponents = [
 
 export const providers = [
     AuthGuard,
-    FirebaseService
+    FirebaseService,
+    BourbonService
 ]

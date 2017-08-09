@@ -26,7 +26,7 @@ export class BourbonDetailComponent implements OnInit {
             this.id = params['id'];
             this.fireBaseService.getBourbon(this.id).subscribe((bourbon) => {
                 this.ngZone.run(() => {
-                    this.bourbon = new Bourbon(bourbon.id, bourbon.name, bourbon.owner, bourbon.producer, bourbon.location);
+                    this.bourbon = new Bourbon(bourbon.id, bourbon.name, bourbon.owner, bourbon.producer, bourbon.location, bourbon.imageUrl);
                 });
             });
         });

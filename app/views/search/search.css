@@ -1,7 +1,14 @@
+ActionBar {
+  background-color:  #B13729;
+  color: #F7F3E3;
+  font-family: 'Blackoak Std';
+}
+
 .search {
   background-color: #B13729;
   padding: 5 10;
 }
+
 .search-container {
   background-color: rgba(212, 144, 120, .6);
   margin: 0 25;

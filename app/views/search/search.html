@@ -1,18 +1,16 @@
-<ActionBar title="Search" class="action-bar">
-</ActionBar>
-
 <GridLayout rows="auto, *, auto">
     <StackLayout row="0" class="search">
+        <Label horizontalAlignment="center" class="header" text="Search"></Label>
         <GridLayout columns="*,auto" class="search-container">
             <TextField col="0" [(ngModel)]="bourbon" hint="Name" class="search-text"></TextField>
             <Label col="1" text="&#xf002;" (tap)="searchBourbons()" class="icon"></Label>
         </GridLayout>
     </StackLayout>
 
-    <ListView row="1" [items]="items | async" id="bourbon-group" class="list-group">
+    <ListView row="1" [items]="items | async" class="bourbon-list-group" separatorColor="transparent">
         <ng-template let-item="item">
             <GridLayout columns="*">
-                <Label column="0" [text]="item.name" id="bourbon-item" class="list-group-item"></Label>      
+                <Label column="0" [text]="item.name" class="bourbon-list-item bourbon-name"></Label>      
             </GridLayout>
         </ng-template>
     </ListView>

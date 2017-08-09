@@ -9,7 +9,8 @@ In many cases you may want to use the NativeScript core theme instead
 of writing your own CSS rules. For a full list of class names in the theme
 refer to http://docs.nativescript.org/ui/theme.
 */
-@import 'nativescript-theme-core/css/core.light.css';
+
+/* @import 'nativescript-theme-core/css/core.light.css'; */
 @import url('~/platform.css');
 
 Page {
@@ -32,25 +33,42 @@ Button {
     border-radius: 2%;
 }
 
-.small-spacing {
+/* .small-spacing {
     margin: 5;
 }
 
 .medium-spacing {
     margin: 10;
-}
+} */
 
 .icon {
     font-family: 'FontAwesome'
 }
 
-#bourbon-item {
+.bourbon-list-item {
   background-color: rgba(0, 0, 0, .7);
   margin: 15 0;
-  color: #F7F3E3;
-  font-weight: bold;
+  padding: 10 0 10 25;
 } 
 
-#bourbon-group {
+.bourbon-list-group {
     background-color: transparent;
+    border-color: green;
+}
+
+.bourbon-name {
+  color: #F7F3E3;
+  font-size: 32px;
+  font-family: "Birch Std";
+}
+
+.bourbon-image {
+    
+}
+
+.header {
+    font-family: "Blackoak Std";
+    text-transform: uppercase;
+    padding: 10 0;
+    color: #F7F3E3;
 }
