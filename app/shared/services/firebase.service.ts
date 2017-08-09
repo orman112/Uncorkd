@@ -110,7 +110,6 @@ export class FirebaseService {
 
         return new Observable((observer: any) => {
             let onValueEvent = (data: any) => {
-                console.log(data);
                 let result = this.handleSnapshot(data, observer);
             };
 
@@ -158,7 +157,8 @@ export class FirebaseService {
         }
         else {
             this.ngZone.run(() => {
-                this._allBourbons.push(data.value);
+                let result = (Object).assign({id: data.key}, data.value);
+                this._allBourbons.push(result);
                 this.publishUpdates();
                 observer.next(this._allBourbons);
             });

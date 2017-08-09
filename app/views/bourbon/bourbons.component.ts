@@ -29,7 +29,7 @@ export class BourbonsComponent implements OnInit {
 
         let bourbonListView = <ListView>this.bourbonList.nativeElement;
 
-        this.fireBaseService.logBourbons();
+        //this.fireBaseService.logBourbons();
 
         /*bourbonListView.on(ListView.loadMoreItemsEvent, () => {
             this.items = <any>this.fireBaseService.getTenBourbons();
@@ -50,6 +50,7 @@ export class BourbonsComponent implements OnInit {
 
 
     viewDetail(id: string){
+        console.log(`Bourbon Id: ${id}`);
         this.router.navigate(["/bourbon-detail", id]);
     }
 }
