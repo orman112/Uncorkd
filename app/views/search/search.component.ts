@@ -1,8 +1,9 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Observable } from "rxjs/Observable";
 import { Bourbon } from "../../shared/models";
-import { FirebaseService } from '../../shared/services'
-import { View } from 'ui/core/view'
+import { FirebaseService } from '../../shared/services';
+import { View } from 'ui/core/view';
+import { RouterExtensions } from 'nativescript-angular/router';
 
 @Component({
     selector: 'uc-search',
@@ -15,7 +16,8 @@ export class SearchComponent {
     public items: Observable<Bourbon>;
     bourbon = ""
 
-    constructor(private firebaseService: FirebaseService) {
+    constructor(private firebaseService: FirebaseService,
+        private routerExtensions: RouterExtensions) {
 
     }
 
@@ -26,5 +28,10 @@ export class SearchComponent {
         }
 
         this.items = <any>this.firebaseService.searchByName(this.bourbon);
+    }
+
+    viewDetail(id: string){
+        console.log(`Bourbon Id: ${id}`);
+        this.routerExtensions.navigate(["/bourbon-detail", id], { clearHistory: true });
     }
 }
