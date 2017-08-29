@@ -4,6 +4,7 @@ import { Bourbon } from "../../shared/models";
 import { FirebaseService, BourbonService } from "../../shared/services";
 import { Router } from '@angular/router';
 import { ListView } from 'ui/list-view';
+import { RouterExtensions } from 'nativescript-angular/router';
 
 @Component({
     selector: "uc-bourbons",
@@ -17,7 +18,7 @@ export class BourbonsComponent implements OnInit {
 
     constructor(private fireBaseService: FirebaseService,
         private bourbonService: BourbonService,
-        private router: Router) {
+        private routerExtensions: RouterExtensions) {
 
     }
 
@@ -45,6 +46,6 @@ export class BourbonsComponent implements OnInit {
 
     viewDetail(id: string){
         console.log(`Bourbon Id: ${id}`);
-        this.router.navigate(["/bourbon-detail", id]);
+        this.routerExtensions.navigate(["/bourbon-detail", id], { clearHistory: true });
     }
 }

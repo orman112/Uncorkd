@@ -1,12 +1,15 @@
-<ActionBar title="Details" class="action-bar"></ActionBar>
-<GridLayout rows="*,auto">
-    <GridLayout row="0" columns="100, auto" rows="auto, auto, auto, auto, auto" class="page">
-        <Label class="bourbon-name" row="0" col="1" [text]="bourbon.name"></Label>
-        <Label row="1" col="1" text="{{'Owner: ' + bourbon.owner}}"></Label>
-        <Label row="2" col="1" text="{{'Producer: ' + bourbon.producer}}"></Label>
-        <Label row="3" col="1" text="{{'Location: ' + bourbon.location.city + ', ' + bourbon.location.state}}"></Label>
-        <TextField row="4" [text]="bourbon.imageUrl" col="1"></TextField>
-    </GridLayout>
+<GridLayout rows="*, auto">
+    <StackLayout orientation="horizontal" row="0" horizontalAlignment="right" verticalAlignment="center">
+        <StackLayout>
+            <Image class="bourbon-image" [src]="bourbon.imageUrl" height="175" width="100"></Image>
+        </StackLayout>
+        <GridLayout rows="auto, auto, auto, auto">
+            <Label class="bourbon-name" row="0" [text]="bourbon.name"></Label>
+            <Label class="details" row="1" text="{{'Owner: ' + bourbon.owner}}"></Label>
+            <Label class="details" row="2" text="{{'Producer: ' + bourbon.producer}}"></Label>
+            <Label class="details" row="3" text="{{'Location: ' + bourbon.location.city + ', ' + bourbon.location.state}}"></Label>
+        </GridLayout>
+    </StackLayout>
     <StackLayout row="1">
         <uc-footer></uc-footer>
     </StackLayout>
