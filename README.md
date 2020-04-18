@@ -1,2 +1,3 @@
 # Uncorkd
-Mobile app for sharing favorite bourbons using NativeScript with Typescript and Angular 2 frontend
+Mobile app for sharing favorite bourbons using NativeScript with Typescript and Angular 2
+
